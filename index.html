@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="src/assets/check-lists-.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+    <style>
+    .status-dropdown {
+      max-width: 120px; /* Adjust the width as needed */
+    }
+    .status-dropdown {
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition */
+}
+.content-editable {
+  
+  display: inline-block;
+}
+.saved-message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  padding: 10px;
+  background-color: rgba(125, 161, 239, 0.8); /* Semi-transparent green */
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+}
+
+
+
+
+
+.status-dropdown.focused {
+  transform: translateX(-20px); /* Shift left when focused */
+}
+[contenteditable]:focus {
+    outline: none;
+    -webkit-outline: none; /* for older WebKit-based browsers */
+    -moz-outline: none;   /* for older Firefox */
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

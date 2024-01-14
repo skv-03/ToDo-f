@@ -1,0 +1,17 @@
+.list-group-item {
+    position: relative;
+  }
+  
+  .focused .dropdown-container {
+    position: relative;
+  }
+  
+  .focused .status-dropdown {
+    margin-right: 10px;  /* Adjust the margin as needed for the dropdown */
+  }
+  
+  .focused .delete-button {
+    position: absolute;
+    right: 0;
+  }
+  
