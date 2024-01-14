@@ -7,35 +7,32 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api");
+        const response = await fetch(
+          import.meta.env.VITE_REACT_APP_BACKEND_API_URL
+        );
         const responseData = await response.json();
         setData(responseData);
       } catch (error) {
-        console.log("failed");
-        console.error("Error fetching data:", error);
+        console.log(error);
       }
     };
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs once when the component mounts
+  }, []);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     Save();
-  //   }, 30000);
-
-  //   // Cleanup function to clear the interval when the component unmounts
-  //   return () => clearInterval(intervalId);
-  // }, []); // Empty dependency array to run the effect only once on mount
   const [isSaved, setIsSaved] = useState(false);
+
   const Save = async () => {
-    const dataToSend = { items: [...data] }; // Wrap the array in an object with the "items" property
+    const dataToSend = { items: [...data] };
     const stringifyData = JSON.stringify(dataToSend);
     try {
-      const response = await fetch("http://localhost:3000/api", {
-        method: "POST",
-        body: stringifyData,
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        import.meta.env.VITE_REACT_APP_BACKEND_API_URL,
+        {
+          method: "POST",
+          body: stringifyData,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
       if (response.ok) {
         console.log("ok");
@@ -46,7 +43,9 @@ function App() {
           setIsSaved(false);
         }, 500); // Handle successful save (e.g., update UI, clear pending changes)
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   const manualSave = async () => {
     Save();
